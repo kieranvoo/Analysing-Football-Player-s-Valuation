@@ -39,10 +39,34 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 * Injury: Categorised the variable days_injured
 * Minutes_category: Categorised the variable minutes.played
 
-3. Description and Cleaning of Dataset
+# 3. Description and Cleaning of Dataset
 
-3.1 Summary statistics for the main variable of interest, current_value
+## 3.1 Summary statistics for the main variable of interest, current_value
 
 ![image](images/3.1%20Histogram.png)
 
 As seen in the histogram of current_value, we observed that the variable exhibited significant right-skewness. To address this, we applied a natural log transformation to the variable.
+
+![image](images/3.1%20Boxplot.png)
+
+The log-transformed data appears to have some outlying values at the right tail. Therefore weplotted a boxplot of log(current_value) to investigate the outliers. As seen in the boxplotmentioned, there are some outliers on the right of the boxplot. 
+As a result, we removed 8 observations with values of log(current_value) greater than 18.32185 or less than 9.645639, resulting in a reduction in the number of observations from 2794 to 2786.
+
+## 3.2 Summary Statistics for other variables
+### 3.2.1 Position of the player `position`
+![image](images/3.2.1%20Position.png)
+The bar chart displays the distribution of players across the four attacking positions: Centre Forward, Left Winger, Right Winger, Second Striker.
+### 3.2.2 Whether he is a winger `winger`
+![image](images/3.2.2%20Winger.png)
+### 3.2.3 Height of the player
+![image](images/3.2.3%20Distribution%20of%20player's%20height.png)
+Player height is relatively normally distributed among attackers in the sample, with most falling between 170 cm and 190 cm.
+
+![image](images/3.2.3%20Boxplot%20of%player's%20height.png)
+We removed 16 height outliers, resulting in the boxplot as shown.
+
+![image](images/3.2.3%20Player%20Height%20by%20position.png)
+Finally, we analysed the distribution based on each position group.
+Height may play a more prominent role for Centre Forwards compared to other forward roles.
+
+
