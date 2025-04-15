@@ -43,6 +43,6 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 
 3.1 Summary statistics for the main variable of interest, current_value
 
-![image](images/3.1 Histogram.png)
+![image](images/3.1%20Histogram.png)
 
 As seen in the histogram of current_value, we observed that the variable exhibited significant right-skewness. To address this, we applied a natural log transformation to the variable.
