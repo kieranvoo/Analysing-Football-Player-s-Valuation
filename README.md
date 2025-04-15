@@ -57,6 +57,7 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 ![image](images/3.2.1%20Position.png)
 
 * The bar chart displays the distribution of players across the four attacking positions: Centre Forward, Left Winger, Right Winger, Second Striker.
+
 ### 3.2.2 Whether he is a winger `winger`
 ![image](images/3.2.2%20Winger.png)
 
@@ -89,16 +90,19 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 
 * To analyse how injury history relates to player value and performance, we created a new categorical variable injury based on total days injured over two seasons.
 * The variable segments players into six bands reflecting the severity and typical recovery duration of injuries.
+  
 ![image](images/3.2.5%20Boxplot%20of%20log%20days%20injured.png)
 
 * The log-transformation(base e) is applied.
 * No outliers are removed for the boxplot.
+  
 ### 3.2.6 Goals scored `totalgoals`
 ![image](images/3.2.6%20Histogram%20of%20totalgoals.png)
 ![image](images/3.2.6%20Boxplot%20of%20totalgoals.png)
 
 * Data is highly skewed and contains a high number of outliers. However, these values were not removed, as they represent genuine, high-performing players within the dataset.
 * As such, it is expected that a small number of attackers contribute disproportionately to goals scored, hence these outliers are not anomalies but true reflections of performance.
+  
 ![image](images/3.2.6%20Number%20of%20players%20by%20category.png)
 
 * To enable comparison across different levels of scoring performance, we used quantiles at 20% intervals.
@@ -108,6 +112,7 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 3. Moderate (4–8),
 4. High (9–15), and
 5. Very High (16–83)
+   
 ### 3.2.7 Total Assists `totalassists`
 ![image](images/3.2.7%20Histogram%20of%20totalassists.png)
 
@@ -122,6 +127,7 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 2. Low (1-3),
 3. Moderate (3-7),
 4. High (7-43)
+   
 ### 3.2.8 Total number of minutes played across the 2 seasons, `minutes.played`
 
 ![image](images/3.2.8%20Histogram%20of%20minutes%20played.png)
@@ -147,19 +153,19 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 
 * The scatterplot shows a very weak positive trend between height and log-transformed market value (log_cv).
 ![Pearson Correlation](images/4.1.1%20Pearson%20Correlation.png)  
-
 * We performed a Pearson test which revealed a statistically significant but very weak positive correlation between the two variables, r = 0.077, p < 0.001. This indicates that taller players tend to have slightly higher market values, but the strength of this relationship is minimal and likely not practically meaningful.
 
 ##### Conclusion
 * Although the correlation is statistically significant, the large spread of points around the trend line indicates that height plays a negligible role in determining a player's market value.
+  
 ### 4.1.2 Relation between log_cv and log_age
-![Scatter Plot: log_cv vs log_age](images/4.1.2%20Scatter%20Plot%20between%20log_cv%20and%20log_age.png)
+![Scatter Plot: log_cv vs log_age](images/4.1.2%201.png)
 
 * As shown in the scatterplot, although there is a slight upward trend in the regression line, the positive association between log_age and log_cv is weak.
 * The wide spread of data points around the regression line suggests that log-transformed age does not strongly predict a player’s market value.
 * While older players may have slightly higher values on average, this effect is minimal and likely influenced by other variables such as performance or position.
 
-![Pearson Correlation](images/4.1.2%20Pearson%20Correlation.png) 
+![Pearson Correlation](images/4.1.2%202.png) 
 
 * The result showed a statistically significant but very weak positive correlation, r = 0.054, p = 0.004.
 * This indicates that older players tend to have slightly higher market values, but the strength of this relationship is minimal and likely not practically meaningful.
@@ -181,6 +187,7 @@ interquartile ranges imply that value is more likely influenced by individual pe
 metrics (e.g., goals, assists) rather than position alone.
 
 ![One Way ANOVA](images/4.2.1%20One%20Way%20ANOVA.png)
+
 * A one-way ANOVA was conducted to examine whether market value (log_cv) differed significantly across attacker positions (Centre Forward, Left Winger, Right Winger, Second Striker).
 * The results indicated that position was not a statistically significant predictor of market value (F(3, 2766) = 1.22, p = 0.301).
 
@@ -221,7 +228,8 @@ metrics (e.g., goals, assists) rather than position alone.
 ![Spearman Correlation](images/4.3.1%20Spearman.png)
 
 * The Spearman's rank correlation coefficient (rho) of 0.516794 indicates a moderate positive correlation between totalgoals and log_cv.
-* * The significantly low p-value also indicates that the correlation is statistically significant.
+* The significantly low p-value also indicates that the correlation is statistically significant.
+  
 ![Boxplot](images/4.3.1%20Boxplot.png)
 
 * The bar chart displays the distribution of players across the five goal-scoring categories.
