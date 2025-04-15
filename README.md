@@ -58,7 +58,7 @@ As a result, we removed 8 observations with values of log(current_value) greater
 The bar chart displays the distribution of players across the four attacking positions: Centre Forward, Left Winger, Right Winger, Second Striker.
 ### 3.2.2 Whether he is a winger `winger`
 ![image](images/3.2.2%20Winger.png)
-### 3.2.3 Height of the player
+### 3.2.3 Height of the player `height`
 ![image](images/3.2.3%20Distribution%20of%20player's%20height.png)
 
 Player height is relatively normally distributed among attackers in the sample, with most falling between 170 cm and 190 cm.
@@ -72,4 +72,24 @@ We removed 16 height outliers, resulting in the boxplot as shown.
 Finally, we analysed the distribution based on each position group.
 Height may play a more prominent role for Centre Forwards compared to other forward roles.
 
+### 3.2.5 Age of the player `age`
+![image](images/3.2.4%20Distribution%20of%20log_age.png)
 
+![image](images/3.2.3%20Boxplot%20of%log_age.png)
+
+### 3.2.5 Total number of days injured across the 2 seasons, `days_injured`
+![image](images/3.2.5%20Distribution%20of%20Injuries%20in%the%20dataset.png)
+
+![image](images/3.2.5%20Boxplot%20of%20log%20days%20injured.png)
+
+### 3.2.6 Goals scored `totalgoals`
+![image](images/3.2.6%20Histogram%20of%20totalgoals.png)
+
+![image](images/3.2.6%20Player%20Height%20by%20position.png)
+
+![image](images/3.2.6%20Number%20of%20players%20by%20category.png)
+
+### 3.2.7 Total Assists `totalassists`
+![image](images/3.2.7%20Histogram%20of%20totalassists.png)
+
+![image](images/3.2.7%20Number%20of%20players%20by%20category.png)
