@@ -85,7 +85,7 @@ Height may play a more prominent role for Centre Forwards compared to other forw
 ### 3.2.6 Goals scored `totalgoals`
 ![image](images/3.2.6%20Histogram%20of%20totalgoals.png)
 
-![image](images/3.2.6%20Player%20Height%20by%20position.png)
+![image](images/3.2.6%20Boxplot%20of%20totalgoals.png)
 
 ![image](images/3.2.6%20Number%20of%20players%20by%20category.png)
 
