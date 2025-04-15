@@ -63,7 +63,7 @@ The bar chart displays the distribution of players across the four attacking pos
 
 Player height is relatively normally distributed among attackers in the sample, with most falling between 170 cm and 190 cm.
 
-![image](images/3.2.3%20Boxplot%20of%player's%20height.png)
+![image](images/3.2.3%20Boxplot%20of%20player%27s%20height.png)
 
 We removed 16 height outliers, resulting in the boxplot as shown.
 
