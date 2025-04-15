@@ -284,19 +284,90 @@ multiple comparisons.
 ### 4.3.3 Relation between log_cv and days injured
 
 ![Boxplot](images/4.3.3%20Boxplot.png)  
-![One Way ANOVA](images/4.3.3%20One%20Way%20ANOVA.png)  
+
+* The boxplot visualises the relationship between injury categories and log_cv.
+* Interestingly, players with no injury history tend to have lower median and mean market values than those who experienced injuries, even in longer-duration categories.
+* This suggests that higher-valued players may be more involved in gameplay, increasing their risk of injury, or that market value is resilient to moderate injury setbacks, especially for established or high-performing players.
+
+![One Way ANOVA](images/4.3.3%20One%20Way%20ANOVA.png) 
+
+* To statistically test the observations from the boxplot, we performed an ANOVA test with the following hypothesis:
+𝐻0: log_cv does not differ significantly across levels of injury duration.
+𝐻1: log_cv differs significantly across levels of injury duration
+* From the results generated, F-value is high at 92.72, and p-value is < 2e^-16, lower than the significance level of 0.05.
+* Hence, we reject the null hypothesis and conclude that there is a statistically significant difference in market value among players based on their injury history.
+
 ![Post Hoc](images/4.3.3%20Post%20Hoc.png)
 
+* Again, we go one step further and perform pairwise t-tests with Bonferroni adjustment. The results were aligned with what was observed from the boxplot.
+* Since all p-values < 2e^-16, it revealed that players with no injury history have significantly lower mean current value compared to all injury categories.
+* As for players with injury history, all p-values were above 0.05, showing no significant differences between the various injury durations.
+
+### 4.3.4 Relation between log_cv and minutes.played
+
+![Boxplot](images/4.3.4%201.png)  
+
+* The boxplot visualises the relationship between experience level categories and log_cv.
+* The general trend is as expected, where an increase in experience level led to an increase in log_cv.
+
+![One Way ANOVA](images/4.3.4%202.png) 
+
+* To statistically test the observations from the boxplot, we perform an ANOVA test with the following hypothesis:
+𝐻0: log_cv does not differ significantly across experience levels.
+𝐻1: log_cv differs significantly across experience levels.
+* From the results generated, F-value is significantly high at 289.8, and p-value is < 2e^-16, lower than the significance level of 0.05.
+* Hence, we reject the null hypothesis and conclude that there is a statistically significant difference in market value among players based on their experience levels.
+
 ## 4.4 What is the most important variable to predict log_cv?
+We will now perform a simple linear regression analysis to determine which of the 4 performance measures could be used to model log_cv through a simple regression analysis:
 
 ![Equation](images/4.4%201%20Equation.png)  
+
+$ \log\_cv = \beta_0 + \beta_1 X + \varepsilon $
+
+where 𝑋 could be one of totalgoals, totalassists, minutes.played, or days_injured. 
+
+The table below shows the summary of the analysis.
+
+By comparing the R-squared and the residual plot, minutes.played is determined to be the most important measure to model log(cv), closely followed by totalassists, then totalgoals using a
+simple linear model.
+
+##### Total Goals (X):
+Fitted Model with Y being log_cv: $Y = 13.2280 + 0.0853X$
+p-value: <2.2e^{-16}
+R-squared: 0.2546
+Boxplot and qq-plot of residuals:
 ![Total Goals](images/4.4%202%20totalgoals.png)  
+
+##### Total Assistss (X):
+Fitted Model with Y being log_cv: $Y = 13.2151 + 0.1724X$
+p-value: <2.2e^{-16}
+R-squared: 0.2807
+Boxplot and qq-plot of residuals:
 ![Total Assists](images/4.4%203%20totalassists.png)  
-![Minutes Played](images/4.4%204%20minutes.played.png)  
+
+##### Minutes.played (X):
+Fitted Model with Y being log_cv: $Y = 1.279e^1 + (5.038e^{-4})X$
+p-value: <2.2e^{-16}
+R-squared: 0.3125
+Boxplot and qq-plot of residuals:
+![Minutes Played](images/4.4%204%20minutes.played.png) 
+
+##### Total Assists (X):
+Fitted Model with Y being log_cv: $Y = 13.7219 + 0.0019X$
+p-value: <2.2e^{-16}
+R-squared: 0.0442
+Boxplot and qq-plot of residuals:
 ![Days Injured](images/4.4%205%20days_injured.png)
 
 ### 4.5 Multi Linear Regression (Robust Regression)
+In this section, we attempt to build a multiple linear model for ‘log_cv’ based on the 4 statistically significant numerical measures from our analysis, namely ‘totalgoals’ and ‘totalassists’, ‘minutes.played’, and ‘days_injured’. 
+
+We used a robust regression model instead of a standard OLS model, due to our key predictors (totalgoals and totalassists) being highly right-skewed and non-normalized. In a standard OLS fit, those extreme X-values become high-leverage points that can disproportionately pull the slope estimates. 
+
+By using Huber’s M-estimator rlm(), we down-weight observations with unusually large residuals or leverage, producing coefficient estimates that better reflect the typical relationship across the full sample of attackers. The resulting robust slopes are slightly more conservative than OLS but confirm the same substantive story—goals and assists each carry a strong, positive premium in market value—while guarding against undue influence from a few outliers.
 
 ![Multiple Regression](images/4.5%20Multi%20Regression.png)
 
-
+The results and analysis of the new fitted model as shown below:
+log_cv = 12.7089 + 0.0266 * totalgoals + 0.0714 * totalassists + 0.0002 * minutes.played + 0.0014 * days_injured
