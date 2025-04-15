@@ -144,36 +144,141 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 ## 4.1 Correlation between log_cv and numerical variables in the raw data
 ### 4.1.1 Relation between log_cv and height
 ![Scatter Plot: log_cv vs Height](images/4.1.1%20Scatter%20Plot%20between%20log_cv%20and%20height.png)
+
+* The scatterplot shows a very weak positive trend between height and log-transformed market value (log_cv).
 ![Pearson Correlation](images/4.1.1%20Pearson%20Correlation.png)  
 
+* We performed a Pearson test which revealed a statistically significant but very weak positive correlation between the two variables, r = 0.077, p < 0.001. This indicates that taller players tend to have slightly higher market values, but the strength of this relationship is minimal and likely not practically meaningful.
+
+##### Conclusion
+* Although the correlation is statistically significant, the large spread of points around the trend line indicates that height plays a negligible role in determining a player's market value.
 ### 4.1.2 Relation between log_cv and log_age
 ![Scatter Plot: log_cv vs log_age](images/4.1.2%20Scatter%20Plot%20between%20log_cv%20and%20log_age.png)
+
+* As shown in the scatterplot, although there is a slight upward trend in the regression line, the positive association between log_age and log_cv is weak.
+* The wide spread of data points around the regression line suggests that log-transformed age does not strongly predict a player’s market value.
+* While older players may have slightly higher values on average, this effect is minimal and likely influenced by other variables such as performance or position.
+
 ![Pearson Correlation](images/4.1.2%20Pearson%20Correlation.png) 
+
+* The result showed a statistically significant but very weak positive correlation, r = 0.054, p = 0.004.
+* This indicates that older players tend to have slightly higher market values, but the strength of this relationship is minimal and likely not practically meaningful.
+
+##### Conclusion
+* Although the correlation is statistically significant, the large spread of points around the trend line indicates that log_age plays a negligible role in determining a player's market value.
 
 ## 4.2 Correlations between log_cv and categorical variables in raw data
 ### 4.2.1 Relation between log_cv and position
 ![Boxplot](images/4.2.1%20Boxplot.png)  
+
+* The box plot illustrates the distribution of log-transformed player market value (log_cv) across four attacking positions: Centre Forward, Left Winger, Right Winger, and Second Striker.
+##### Observations:
+* The distributions appear fairly similar, with no striking differences in median or mean
+values across groups. This suggests that among attackers, the specific position alone
+does not substantially differentiate market value.
+* While Centre Forwards and Wingers show slightly higher mean values, the overlapping
+interquartile ranges imply that value is more likely influenced by individual performance
+metrics (e.g., goals, assists) rather than position alone.
+
 ![One Way ANOVA](images/4.2.1%20One%20Way%20ANOVA.png)
+* A one-way ANOVA was conducted to examine whether market value (log_cv) differed significantly across attacker positions (Centre Forward, Left Winger, Right Winger, Second Striker).
+* The results indicated that position was not a statistically significant predictor of market value (F(3, 2766) = 1.22, p = 0.301).
+
+##### Conclusion
+* This suggests that among attackers, market value does not significantly differ by positional role.
 
 ### 4.2.2  Relation between log_cv and winger
 ![Boxplot](images/4.2.2%20Boxplot.png)  
+
+* This boxplot compares log-transformed market value (log_cv) between Wingers and Non-Wingers.
+##### Observations:
+* Both groups exhibit nearly identical distributions, with overlapping interquartile ranges, similar medians, and means. This suggests that being a winger does not significantly influence a player’s market value on its own.
+* Instead, valuation is likely driven more by individual performance metrics such as goals and assists, rather than a binary positional classification.
+
 ![F-test](images/4.2.2%20F-test.png)
+
+* The F-test returned a p-value of 0.5122 > 0.05, hence we do not reject the null hypothesis that the true ratio of variances is equal to 1. Equal variances were assumed for the two-sample t-test.
+
 ![Two Sample Test](images/4.2.2%202%20sample%20test.png)  
+
+* We then performed a two-sample t-test to determine whether there is any true difference in means with the following hypotheses:
+𝐻0: Mean log_cv is equal between wingers and non-wingers
+𝐻1: Mean log_cv is different between the two groups
+* The p-value (0.3454) is much greater than 0.05, so we do not reject the null hypothesis, drawing the conclusion that mean log_cv is equal.
+
+##### Conclusion
+* There is no statistically significant difference in log_cv between wingers and non-wingers.
 
 ## 4.3. Correlations between log_cv and variables that we changed
 ### 4.3.1 Relation between log_cv and goals
 ![Scatterplot](images/4.3.1%20Scatterplot.png)  
+
+* The regression line shows positive correlation between totalgoals and log_cv - however, the relationship looks mostly non-linear.
+* To confirm this association, we conduct a hypothesis test with the following hypotheses:
+𝐻0: p=0 (there is no monotonic association)
+𝐻1: p≠0 (there is a monotonic association)
+
 ![Spearman Correlation](images/4.3.1%20Spearman.png)
-![Boxplot](images/4.3.1%20Boxplot.png)  
+
+* The Spearman's rank correlation coefficient (rho) of 0.516794 indicates a moderate positive correlation between totalgoals and log_cv.
+* * The significantly low p-value also indicates that the correlation is statistically significant.
+![Boxplot](images/4.3.1%20Boxplot.png)
+
+* The bar chart displays the distribution of players across the five goal-scoring categories.
+* While all categories are relatively well-represented, there are a few observations:
+1. Moderate group contains the largest number of players, suggesting that most attackers score between 4 to 8 goals over two seasons.
+2. Both the Very Low and Very High categories are also substantial, reflecting the expected variation in forward performance.
+* The balanced spread across categories supports robust comparative analysis.
+
 ![One Way ANOVA](images/4.3.1%20One%20Way%20ANOVA.png)  
+
+* The large F-statistic indicates substantial between-group variation relative to within-group variation, suggesting that goal-scoring categories strongly predict market value differences.
+* Also, the very small p-value shows that this relationship between goal-scoring categories and market value is significant.
+
 ![Post Hoc](images/4.3.1%20Post%20Hoc.png)  
 
+* The Bonferroni-adjusted pairwise t-tests show that log_cv differs significantly across nearly all goal-scoring categories.
+1. Every comparison involving the Very High and High scoring groups shows extremely small p-values (all < 2e-16), indicating strong evidence of value differences.
+2. Even lower-tier comparisons, such as between Low and Very Low, are statistically significant.
+* This reinforces the ANOVA findings, confirming that goal-scoring performance has a clear and measurable impact on player market value.
+
 ### 4.3.2 Relation between log_cv and assists
+![Scatterplot](images/4.3.2%20Scatterplot.png) 
+
+* There is a slight positive relationship between totalassists and log_cv.
+* This trend suggests that the current value of a player increases as the totalassists increases.
+* However, the relationship looks mostly non-linear.
+* Thus, to confirm the presence of this association, we conduct a hypothesis test with the following hypotheses:
+𝐻0: p=0 (there is no monotonic association)
+𝐻1: p≠ 0 (there is a monotonic association)
+
+![Spearman Correlation](images/4.3.2%20Spearman.png)
+
+* Based on the results from the Spearman’s rank correlation test, we get a rho value of 0.5331, which indicates a moderate positive monotonic relationship between totalassists and log_cv.
+* This supports the analysis from the scatter plot, as there is a positive relationship, but it is not necessarily linear.
+* The test also yields a p-value < 2.2e^-16, which is significantly smaller than the significance level set at 0.05.
+* Thus, we reject the null hypothesis and conclude that there is strong evidence of a significant monotonic relationship between totalassists and log_cv.
 
 ![Boxplot](images/4.3.2%20Boxplot.png)  
-![One Way ANOVA](images/4.3.2%20One%20Way%20ANOVA.png)  
+
+* Now we examine the distribution of log_cv across the 4 categories for assists.
+* From the boxplot, we can see that in general, players in the higher assist categories have a higher log_cv value, showing a positive relationship between log_cv and the Assist Category.
+
+![One Way ANOVA](images/4.3.2%20One%20Way%20ANOVA.png) 
+
+* To statistically test the observations from the boxplot, we perform an ANOVA test with the following hypothesis:
+𝐻0: All group means of log_cv are equal
+𝐻1: At least one group mean is different
+* From the results generated, our F-statistic is extremely high, at 349.5, and our p-value < 2e^-16, which is lower than the significance value of 0.05.
+* Thus, we reject the null hypothesis and conclude that there are significant differences in the group means across the categories.
+
 ![Post Hoc](images/4.3.2%20Post%20Hoc.png)  
-![Scatterplot](images/4.3.2%20Scatterplot.png)  
+
+* We then go one step further to investigate which specific groups differ by conducting pairwise t-tests with Bonferroni adjustment to control for
+multiple comparisons.
+* From the results, all the p-values < 2e^-16, which tells us that all comparisons between the categories are statistically significant for significance levels of 0.05.
+* This means that each assist category has a significantly different mean from the other categories.
+
 ![Spearman Correlation](images/4.3.2%20Spearman.png)
 
 ### 4.3.3 Relation between log_cv and days injured
