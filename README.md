@@ -79,7 +79,7 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 
 ### 3.2.5 Age of the player `age`
 ![image](images/3.2.4%20Distribution%20of%20log_age.png)
-![image](images/3.2.3%20Boxplot%20of%20log_age.png)
+![image](images/3.2.4%20Boxplot%20of%20log_age.png)
 
 * The log-transformation(base e) is applied.
 * No outliers are removed for the boxplot.
@@ -139,5 +139,59 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 3. Moderate (1500–2700)
 4. High (2700–4000)
 5. Very High (>4000).
+
+# 4. Statistical Analysis
+## 4.1 Correlation between log_cv and numerical variables in the raw data
+### 4.1.1 Relation between log_cv and height
+![Scatter Plot: log_cv vs Height](images/4.1.1%20Scatter%20Plot%20between%20log_cv%20and%20height.png)
+![Pearson Correlation](images/4.1.1%20Pearson%20Correlation.png)  
+
+### 4.1.2 Relation between log_cv and log_age
+![Scatter Plot: log_cv vs log_age](images/4.1.2%20Scatter%20Plot%20between%20log_cv%20and%20log_age.png)
+![Pearson Correlation](images/4.1.2%20Pearson%20Correlation.png) 
+
+## 4.2 Correlations between log_cv and categorical variables in raw data
+### 4.2.1 Relation between log_cv and position
+![Boxplot](images/4.2.1%20Boxplot.png)  
+![One Way ANOVA](images/4.2.1%20One%20Way%20ANOVA.png)
+
+### 4.2.2  Relation between log_cv and winger
+![Boxplot](images/4.2.2%20Boxplot.png)  
+![F-test](images/4.2.2%20F-test.png)
+![Two Sample Test](images/4.2.2%202%20sample%20test.png)  
+
+## 4.3. Correlations between log_cv and variables that we changed
+### 4.3.1 Relation between log_cv and goals
+![Scatterplot](images/4.3.1%20Scatterplot.png)  
+![Spearman Correlation](images/4.3.1%20Spearman.png)
+![Boxplot](images/4.3.1%20Boxplot.png)  
+![One Way ANOVA](images/4.3.1%20One%20Way%20ANOVA.png)  
+![Post Hoc](images/4.3.1%20Post%20Hoc.png)  
+
+### 4.3.2 Relation between log_cv and assists
+
+![Boxplot](images/4.3.2%20Boxplot.png)  
+![One Way ANOVA](images/4.3.2%20One%20Way%20ANOVA.png)  
+![Post Hoc](images/4.3.2%20Post%20Hoc.png)  
+![Scatterplot](images/4.3.2%20Scatterplot.png)  
+![Spearman Correlation](images/4.3.2%20Spearman.png)
+
+### 4.3.3 Relation between log_cv and days injured
+
+![Boxplot](images/4.3.3%20Boxplot.png)  
+![One Way ANOVA](images/4.3.3%20One%20Way%20ANOVA.png)  
+![Post Hoc](images/4.3.3%20Post%20Hoc.png)
+
+## 4.4 What is the most important variable to predict log_cv?
+
+![Equation](images/4.4%201%20Equation.png)  
+![Total Goals](images/4.4%202%20totalgoals.png)  
+![Total Assists](images/4.4%203%20totalassists.png)  
+![Minutes Played](images/4.4%204%20minutes.played.png)  
+![Days Injured](images/4.4%205%20days_injured.png)
+
+### 4.5 Multi Linear Regression (Robust Regression)
+
+![Multiple Regression](images/4.5%20Multi%20Regression.png)
 
 
