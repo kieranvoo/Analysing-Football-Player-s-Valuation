@@ -60,12 +60,15 @@ The bar chart displays the distribution of players across the four attacking pos
 ![image](images/3.2.2%20Winger.png)
 ### 3.2.3 Height of the player
 ![image](images/3.2.3%20Distribution%20of%20player's%20height.png)
+
 Player height is relatively normally distributed among attackers in the sample, with most falling between 170 cm and 190 cm.
 
 ![image](images/3.2.3%20Boxplot%20of%player's%20height.png)
+
 We removed 16 height outliers, resulting in the boxplot as shown.
 
 ![image](images/3.2.3%20Player%20Height%20by%20position.png)
+
 Finally, we analysed the distribution based on each position group.
 Height may play a more prominent role for Centre Forwards compared to other forward roles.
 
