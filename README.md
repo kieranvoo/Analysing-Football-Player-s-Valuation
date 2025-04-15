@@ -45,51 +45,99 @@ After all the preparation and cleaning,  2794 observations (players) with 14 var
 
 ![image](images/3.1%20Histogram.png)
 
-As seen in the histogram of current_value, we observed that the variable exhibited significant right-skewness. To address this, we applied a natural log transformation to the variable.
+* As seen in the histogram of current_value, we observed that the variable exhibited significant right-skewness. To address this, we applied a natural log transformation to the variable.
 
 ![image](images/3.1%20Boxplot.png)
 
-The log-transformed data appears to have some outlying values at the right tail. Therefore weplotted a boxplot of log(current_value) to investigate the outliers. As seen in the boxplotmentioned, there are some outliers on the right of the boxplot. 
-As a result, we removed 8 observations with values of log(current_value) greater than 18.32185 or less than 9.645639, resulting in a reduction in the number of observations from 2794 to 2786.
+* The log-transformed data appears to have some outlying values at the right tail. Therefore we plotted a boxplot of log(current_value) to investigate the outliers. As seen in the boxplot mentioned, there are some outliers on the right of the boxplot. 
+* As a result, we removed 8 observations with values of log(current_value) greater than 18.32185 or less than 9.645639, resulting in a reduction in the number of observations from 2794 to 2786.
 
 ## 3.2 Summary Statistics for other variables
 ### 3.2.1 Position of the player `position`
 ![image](images/3.2.1%20Position.png)
-The bar chart displays the distribution of players across the four attacking positions: Centre Forward, Left Winger, Right Winger, Second Striker.
+
+* The bar chart displays the distribution of players across the four attacking positions: Centre Forward, Left Winger, Right Winger, Second Striker.
 ### 3.2.2 Whether he is a winger `winger`
 ![image](images/3.2.2%20Winger.png)
+
+* Winger is encoded as a binary variable, hence we used a 2-sample t-test to examine the distribution.
+* Since there is a nearly equal distribution between wingers and non-wingers in the dataset, it supports fair comparisons in subsequent analyses involving the winger variable, such as examining its relationship with market value.
+  
 ### 3.2.3 Height of the player `height`
 ![image](images/3.2.3%20Distribution%20of%20player's%20height.png)
 
-Player height is relatively normally distributed among attackers in the sample, with most falling between 170 cm and 190 cm.
+* Player height is relatively normally distributed among attackers in the sample, with most falling between 170 cm and 190 cm.
 
 ![image](images/3.2.3%20Boxplot%20of%20player%27s%20height.png)
 
-We removed 16 height outliers, resulting in the boxplot as shown.
+* We removed 16 height outliers, resulting in the boxplot as shown.
 
 ![image](images/3.2.3%20Player%20Height%20by%20position.png)
 
-Finally, we analysed the distribution based on each position group.
-Height may play a more prominent role for Centre Forwards compared to other forward roles.
+* Finally, we analysed the distribution based on each position group.
+* Height may play a more prominent role for Centre Forwards compared to other forward roles.
 
 ### 3.2.5 Age of the player `age`
 ![image](images/3.2.4%20Distribution%20of%20log_age.png)
+![image](images/3.2.3%20Boxplot%20of%20log_age.png)
 
-![image](images/3.2.3%20Boxplot%20of%log_age.png)
+* The log-transformation(base e) is applied.
+* No outliers are removed for the boxplot.
 
 ### 3.2.5 Total number of days injured across the 2 seasons, `days_injured`
-![image](images/3.2.5%20Distribution%20of%20Injuries%20in%the%20dataset.png)
+![image](images/3.2.5%20Distribution%20of%20Injuries%20in%20the%20dataset.png)
 
+* To analyse how injury history relates to player value and performance, we created a new categorical variable injury based on total days injured over two seasons.
+* The variable segments players into six bands reflecting the severity and typical recovery duration of injuries.
 ![image](images/3.2.5%20Boxplot%20of%20log%20days%20injured.png)
 
+* The log-transformation(base e) is applied.
+* No outliers are removed for the boxplot.
 ### 3.2.6 Goals scored `totalgoals`
 ![image](images/3.2.6%20Histogram%20of%20totalgoals.png)
-
 ![image](images/3.2.6%20Boxplot%20of%20totalgoals.png)
 
+* Data is highly skewed and contains a high number of outliers. However, these values were not removed, as they represent genuine, high-performing players within the dataset.
+* As such, it is expected that a small number of attackers contribute disproportionately to goals scored, hence these outliers are not anomalies but true reflections of performance.
 ![image](images/3.2.6%20Number%20of%20players%20by%20category.png)
 
+* To enable comparison across different levels of scoring performance, we used quantiles at 20% intervals.
+* Resulting in five categories:
+1. Very Low (0–1),
+2. Low (2–3),
+3. Moderate (4–8),
+4. High (9–15), and
+5. Very High (16–83)
 ### 3.2.7 Total Assists `totalassists`
 ![image](images/3.2.7%20Histogram%20of%20totalassists.png)
 
+* Again, data is highly skewed and contains many outliers.
+* Similar to totalgoals, no outliers were removed.
+
 ![image](images/3.2.7%20Number%20of%20players%20by%20category.png)
+
+* As with goal-scoring, quantiles were computed for total assists to guide the creation of assist performance categories.
+* Resulting in four categories:
+1. None (0-1),
+2. Low (1-3),
+3. Moderate (3-7),
+4. High (7-43)
+### 3.2.8 Total number of minutes played across the 2 seasons, `minutes.played`
+
+![image](images/3.2.8%20Histogram%20of%20minutes%20played.png)
+![image](images/3.2.8%20Histogram%20of%20log%20minutes%20played.png)
+
+* Original data is highly skewed to the right.
+* Similar to total assists and total goals, no outliers were removed as they are true reflections of performance.
+
+![image](images/3.2.8%20Number%20of%20players%20by%20category.png)
+
+* Rather than using quantiles, which split the data into equal-sized groups without contextual meaning, we defined cutoffs that reflect real-world playing time thresholds in football.
+* An entire season typically consists of around 2700 minutes. Hence, players were grouped into five experience levels:
+1. Very Low (<500 minutes),
+2. Low (500–1500)
+3. Moderate (1500–2700)
+4. High (2700–4000)
+5. Very High (>4000).
+
+
