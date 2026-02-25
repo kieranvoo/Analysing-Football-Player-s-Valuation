@@ -4,7 +4,7 @@ library(MASS)
 library(ggcorrplot)
 
 # Importing the dataset
-soccer<- read.csv("C:/Users/kiera/OneDrive/Documents/NTU/Y2S2/MH3511 Data Analysis with Computer/Project/final_data.csv",sep = ",",header=TRUE)
+soccer<- read.csv("final_data.csv",sep = ",",header=TRUE)
 soccer
 
 # Section 2: Data Preparation and Cleaning
@@ -483,6 +483,7 @@ robust_mod <- rlm(
   data = soccerclean)
 
 summary(robust_mod)
+
 
 
 
